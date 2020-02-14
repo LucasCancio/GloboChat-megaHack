@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatServidor", "ChatServidor\ChatServidor.csproj", "{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatCliente", "ChatCliente\ChatCliente.csproj", "{084DC58D-AE79-4677-A0ED-DD557A81443A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Apresentação", "0 - Apresentação", "{EBD690F3-8F19-4A4A-919B-03EA03D1C95F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Serviços", "1 - Serviços", "{A8272F8B-DF8C-40F3-9874-C3A9A48E24E1}"
@@ -29,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboChat.Apresentacao.Apli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GloboChat.Apresentacao.Aplicativo", "GloboChat.Apresentacao.Aplicativo\GloboChat.Apresentacao.Aplicativo\GloboChat.Apresentacao.Aplicativo.csproj", "{C4F8D25D-BC2E-4B4F-8651-734AEEE69CCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GloboChat.Servicos.WebService", "GloboChat.Servicos.WebService\GloboChat.Servicos.WebService.csproj", "{473B907D-0D6C-400F-BA47-7EE505D98B6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GloboChat.Servicos.WebService", "GloboChat.Servicos.WebService\GloboChat.Servicos.WebService.csproj", "{473B907D-0D6C-400F-BA47-7EE505D98B6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,34 +43,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|ARM.ActiveCfg = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|iPhone.ActiveCfg = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|x64.ActiveCfg = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|x86.ActiveCfg = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Debug|x86.Build.0 = Debug|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|Any CPU.ActiveCfg = Release|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|ARM.ActiveCfg = Release|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|iPhone.ActiveCfg = Release|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|iPhoneSimulator.ActiveCfg = Release|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|x64.ActiveCfg = Release|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|x86.ActiveCfg = Release|x86
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457}.Release|x86.Build.0 = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|ARM.ActiveCfg = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|iPhone.ActiveCfg = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|x64.ActiveCfg = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|x86.ActiveCfg = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Debug|x86.Build.0 = Debug|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|Any CPU.ActiveCfg = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|ARM.ActiveCfg = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|iPhone.ActiveCfg = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|iPhoneSimulator.ActiveCfg = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|x64.ActiveCfg = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|x86.ActiveCfg = Release|x86
-		{084DC58D-AE79-4677-A0ED-DD557A81443A}.Release|x86.Build.0 = Release|x86
 		{5089590F-BCC2-4B72-AE54-0F94AEAF030E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5089590F-BCC2-4B72-AE54-0F94AEAF030E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5089590F-BCC2-4B72-AE54-0F94AEAF030E}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -252,8 +220,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A53C3A0E-07A0-4215-AD4B-F64D45EC7457} = {A8272F8B-DF8C-40F3-9874-C3A9A48E24E1}
-		{084DC58D-AE79-4677-A0ED-DD557A81443A} = {A8272F8B-DF8C-40F3-9874-C3A9A48E24E1}
 		{C792B4C9-19CE-4767-95B7-155F5FE496F2} = {AA4288C8-2A25-4D3B-916B-DFA680455BC0}
 		{5089590F-BCC2-4B72-AE54-0F94AEAF030E} = {24809D0A-0E9C-45A6-A49C-5A1383693E1F}
 		{66B0A689-35F7-42DE-B96F-0B1F6467D85E} = {C792B4C9-19CE-4767-95B7-155F5FE496F2}

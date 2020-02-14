@@ -11,7 +11,7 @@ namespace GloboChat.Apresentacao.Aplicativo
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new UsuarioCadastro());
+            MainPage = new NavigationPage(new Login());
         }
 
         protected override void OnStart()

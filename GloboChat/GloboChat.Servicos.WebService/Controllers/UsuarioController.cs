@@ -49,18 +49,24 @@ namespace GloboChat.Servicos.WebService.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public Usuario GetById(int id)
+        public IActionResult GetById(int id)
         {
             var user = _usuarioRepository.SelectById(id);
-            return user;
+            if (user==null)
+                return Ok(user);
+            else
+                return NotFound(user);
         }
 
         [HttpGet]
-        [Route("{cpf}")]
-        public Usuario GetByCPF(string cpf)
+        [Route("cpf/{cpf}")]
+        public IActionResult GetByCPF(string cpf)
         {
             var user = _usuarioRepository.SelectByCPF(cpf);
-            return user;
+            if (user == null)
+                return Ok(user);
+            else
+                return NotFound(user);
         }
 
         [HttpPost]
@@ -80,11 +86,11 @@ namespace GloboChat.Servicos.WebService.Controllers
 
         [HttpPost]
         [Route("telefone/{id}")]
-        public IActionResult AlterarTelefone(int id, [FromBody]string novoCelular)
+        public IActionResult AlterarTelefone(int id, [FromBody]string telefone)
         {
             try
             {
-                _usuarioRepository.AlterarTelefone(id,novoCelular);
+                _usuarioRepository.AlterarTelefone(id, telefone);
                 return Ok();
             }
             catch (Exception ex)

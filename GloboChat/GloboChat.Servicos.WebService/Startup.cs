@@ -1,15 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using GloboChat.Dominio.Interfaces.Repositorios;
+using GloboChat.Infra.Data.Repositorios;
+using GloboChat.Servicos.WebService.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace GloboChat.Servicos.WebService
 {
@@ -26,6 +22,19 @@ namespace GloboChat.Servicos.WebService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSignalR();
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:5002");
+            }));
+
+
+            //Injetando Repositorios
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<ICanalRepository, CanalRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,10 +51,18 @@ namespace GloboChat.Servicos.WebService
 
             app.UseAuthorization();
 
+            app.UseCors("CorsPolicy");
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
             });
+
+            
+
         }
+
+        
     }
 }

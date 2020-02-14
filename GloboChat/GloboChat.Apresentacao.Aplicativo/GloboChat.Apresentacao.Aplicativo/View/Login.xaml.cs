@@ -19,7 +19,7 @@ namespace GloboChat.Apresentacao.Aplicativo.View
 
         private async void Logar(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Hub());
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }

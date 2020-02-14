@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GloboChat.Dominio\GloboChat.Dominio.csproj" />
+    <ProjectReference Include="..\GloboChat.Infra.Data\GloboChat.Infra.Data.csproj" />
   </ItemGroup>
 
 

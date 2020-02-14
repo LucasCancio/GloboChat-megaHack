@@ -11,17 +11,23 @@ namespace GloboChat.Infra.Data.Repositorios
     {
         public void AlterarSenha(int id, string novaSenha)
         {
-            throw new NotImplementedException();
+            var user= context.Set<Usuario>().Where(x => x.Id == id).SingleOrDefault();
+            user.pessoa.login.Senha = novaSenha;
+
+            Update(user);
         }
 
-        public void AlterarTelefone(int id, string novoCelular)
+        public void AlterarTelefone(int id, string telefone)
         {
-            throw new NotImplementedException();
+            var user = context.Set<Usuario>().Where(x => x.Id == id).SingleOrDefault();
+            user.pessoa.Telefone = telefone;
+
+            Update(user);
         }
 
         public Usuario SelectByCPF(string cpf)
         {
-            return context.Set<Usuario>().Where(x=>x.CPF==cpf).SingleOrDefault();
+            return context.Set<Usuario>().Where(x=>x.pessoa.login.CPF==cpf).SingleOrDefault();
         }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using GloboChat.Dominio.Entidades;
 using GloboChat.Dominio.Interfaces.Repositorios;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GloboChat.Servicos.WebService.Controllers
@@ -21,11 +17,11 @@ namespace GloboChat.Servicos.WebService.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromBody]Canal user)
+        public IActionResult Post([FromBody]Canal canal)
         {
             try
             {
-                _canalRepository.Insert(user);
+                _canalRepository.Insert(canal);
                 return Ok();
             }
             catch (Exception ex)
@@ -35,11 +31,11 @@ namespace GloboChat.Servicos.WebService.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody]Canal user)
+        public IActionResult Put([FromBody]Canal canal)
         {
             try
             {
-                _canalRepository.Update(user);
+                _canalRepository.Update(canal);
                 return Ok();
             }
             catch (Exception ex)
@@ -50,10 +46,13 @@ namespace GloboChat.Servicos.WebService.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public Canal GetById(int id)
+        public IActionResult GetById(int id)
         {
-            var user = _canalRepository.SelectById(id);
-            return user;
+            var canal = _canalRepository.SelectById(id);
+            if (canal == null)
+                return Ok(canal);
+            else
+                return NotFound(canal);
         }
 
 

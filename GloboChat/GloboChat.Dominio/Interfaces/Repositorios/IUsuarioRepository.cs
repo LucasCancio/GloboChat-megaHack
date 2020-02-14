@@ -9,6 +9,6 @@ namespace GloboChat.Dominio.Interfaces.Repositorios
     {
         Usuario SelectByCPF(string cpf);
         void AlterarSenha(int id, string novaSenha);
-        void AlterarTelefone(int id, string novoCelular);
+        void AlterarTelefone(int id, string telefone);
     }
 }

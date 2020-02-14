@@ -11,6 +11,7 @@ namespace GloboChat.Dominio.Entidades
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Sigla { get; set; }
-        public IEnumerable<Programa> Programas { get; set; }
+
+        public virtual IEnumerable<Chat> Chats { get; set; } = new HashSet<Chat>();
     }
 }

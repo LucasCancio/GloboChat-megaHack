@@ -9,7 +9,7 @@ namespace GloboChat.Dominio.Entidades
     {
         [Key]
         public int Id { get; set; }
-        public string Nick { get; set; }
+        public string CPF { get; set; }
         public string Senha { get; set; }
         public NivelAcesso nivelAcesso { get; set; }
     }

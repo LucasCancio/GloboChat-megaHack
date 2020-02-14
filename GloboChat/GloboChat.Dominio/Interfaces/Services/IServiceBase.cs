@@ -10,7 +10,7 @@ namespace GloboChat.Dominio.Interfaces.Services
         TEntity GetById(int id);
         IEnumerable<TEntity> GetAll();
         void Update(TEntity obj);
-        void Remove(TEntity obj);
+        void Remove(int id);
         void Dispose();
     }
 }

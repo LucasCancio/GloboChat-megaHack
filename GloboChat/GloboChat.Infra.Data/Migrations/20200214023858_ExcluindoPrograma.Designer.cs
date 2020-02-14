@@ -4,14 +4,16 @@ using GloboChat.Infra.Data.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GloboChat.Infra.Data.Migrations
 {
     [DbContext(typeof(GloboChatContext))]
-    partial class GloboChatContextModelSnapshot : ModelSnapshot
+    [Migration("20200214023858_ExcluindoPrograma")]
+    partial class ExcluindoPrograma
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
