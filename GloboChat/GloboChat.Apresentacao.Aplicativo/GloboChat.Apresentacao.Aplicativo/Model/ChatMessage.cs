@@ -1,8 +1,6 @@
 ﻿using MvvmHelpers;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using Xamarin.Essentials;
 
 namespace GloboChat.Apresentacao.Aplicativo.Model

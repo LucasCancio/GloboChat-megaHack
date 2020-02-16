@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using GloboChat.Dominio.Entidades;
 using GloboChat.Dominio.Interfaces.Repositorios;
-using Microsoft.AspNetCore.Http;
+using GloboChat.Servicos.WebService.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GloboChat.Servicos.WebService.Controllers
@@ -14,16 +12,26 @@ namespace GloboChat.Servicos.WebService.Controllers
     public class UsuarioController : ControllerBase
     {
         public readonly IUsuarioRepository _usuarioRepository;
-        public UsuarioController(IUsuarioRepository usuarioRepository)
+        IMapper _mapper;
+        public UsuarioController(IUsuarioRepository usuarioRepository, IMapper mapper)
         {
             _usuarioRepository = usuarioRepository;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody]Usuario user)
+        public IActionResult Post([FromBody]UsuarioCadastroVModel userVModel)
         {
             try
             {
+                userVModel.CPF = userVModel.CPF.Replace(".", "").Replace("-", "");
+
+                var login = _mapper.Map<Login>(userVModel);
+                var pessoa= _mapper.Map<Pessoa>(userVModel);
+                var user = _mapper.Map<Usuario>(userVModel);
+                pessoa.login = login;
+                user.pessoa = pessoa;
+
                 _usuarioRepository.Insert(user);
                 return Ok();
             }
@@ -34,10 +42,16 @@ namespace GloboChat.Servicos.WebService.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody]Usuario user)
+        public IActionResult Put([FromBody]UsuarioViewModel userVModel)
         {
             try
-            {
+            {           
+                var login = _mapper.Map<Login>(userVModel);
+                var pessoa = _mapper.Map<Pessoa>(userVModel);
+                var user = _mapper.Map<Usuario>(userVModel);
+                pessoa.login = login;
+                user.pessoa = pessoa;
+
                 _usuarioRepository.Update(user);
                 return Ok();
             }
@@ -56,6 +70,20 @@ namespace GloboChat.Servicos.WebService.Controllers
                 return Ok(user);
             else
                 return NotFound(user);
+        }
+
+        [HttpGet]
+        [Route("teste")]
+        public IActionResult Teste()
+        {
+            return Ok("testado");
+        }
+
+        [HttpGet]
+        [Route("all")]
+        public IActionResult SelectAll()
+        {
+            return Ok(_usuarioRepository.Select());
         }
 
         [HttpGet]

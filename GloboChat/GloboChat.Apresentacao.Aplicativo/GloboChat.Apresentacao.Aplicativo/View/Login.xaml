@@ -5,14 +5,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GloboChat.Apresentacao.Aplicativo.View.Login">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="GloboChat" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-            <Entry x:Name="eCPF"  Placeholder="Digite seu CPF" Keyboard="Text"/>
-            <Entry x:Name="eSenha"  Placeholder="Digite sua Senha" Keyboard="Text" IsPassword="True"/>
-            <Button x:Name="btnLogar"  Text="LOGAR" Clicked="Logar"/>
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="0">
+            <!--<Image Source="maco1b.jpg" Opacity="0.6" VerticalOptions="Start" Margin="0,3,0,0"/>-->
         </StackLayout>
-    </ContentPage.Content>
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Entry Grid.Row="1" x:Name="entCPF" Text="{Binding CPF}" Placeholder="CPF" PlaceholderColor="#bababa" FontSize="16"/>
+            <Entry Grid.Row="2" x:Name="entSenha" Text="{Binding Senha}" Placeholder="Senha" PlaceholderColor="#bababa" FontSize="16"/>
+            <Button Text="LogIn" x:Name="btnLogin" Command="{Binding LoginCommand}" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50"
+VerticalOptions="Start" Grid.Row="3"/>
+            <Label Text="Problemas no Login ? " HorizontalOptions="Center" Grid.Row="4" Margin="0,10,0,0" 
+FontSize="12"/>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label BackgroundColor="#bababa" HeightRequest="1" HorizontalOptions="FillAndExpand" 
+VerticalOptions="Center"/>
+                <!--<Image Source="gfacebook.png" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>-->
+                <Label BackgroundColor="#bababa" Grid.Column="2" HeightRequest="1" 
+HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6">
+                <Label Text="Login com Facebook" TextColor="#485992"  />
+            </StackLayout>
+        </Grid>
+        <StackLayout Grid.Row="2" BackgroundColor="#ffffff">
+            <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+            <Label Text="Não possui uma Conta ? Registre-se." VerticalOptions="FillAndExpand" 
+VerticalTextAlignment="Center"
+                      HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

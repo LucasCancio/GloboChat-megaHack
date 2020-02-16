@@ -9,7 +9,11 @@ namespace GloboChat.Infra.Data.Repositorios
 {
 	public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
 	{
-		protected GloboChatContext context = new GloboChatContext();
+		protected GloboChatContext context;
+		public RepositoryBase(GloboChatContext Context)
+		{
+			context = Context;
+		}
 
 		public void Insert(TEntity obj)
 		{
@@ -29,12 +33,12 @@ namespace GloboChat.Infra.Data.Repositorios
 			context.SaveChanges();
 		}
 
-		public IList<TEntity> Select()
+		public virtual IList<TEntity> Select()
 		{
 			return context.Set<TEntity>().ToList();
 		}
 
-		public TEntity SelectById(int id)
+		public virtual TEntity SelectById(int id)
 		{
 			return context.Set<TEntity>().Find(id);
 		}

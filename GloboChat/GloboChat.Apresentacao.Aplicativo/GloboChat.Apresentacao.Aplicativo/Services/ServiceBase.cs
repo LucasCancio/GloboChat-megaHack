@@ -10,7 +10,7 @@ namespace GloboChat.Apresentacao.Aplicativo.Services
 {
     public class ServiceBase
     {
-        protected const string URI_GloboChatAPI = "https://localhost:44347/api/";
+        protected const string URI_GloboChatAPI = "http://localhost:44347/api/";
         public string GetData(string uri, string type, List<string[]> Headers = null)
         {
             try

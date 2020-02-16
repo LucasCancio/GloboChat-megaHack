@@ -3,15 +3,15 @@ using GloboChat.Infra.Data.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GloboChat.Infra.Data.Contexto
 {
     public class GloboChatContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public GloboChatContext(DbContextOptions<GloboChatContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=localhost\SQLExpress;Initial Catalog=GloboChat;Integrated Security=SSPI;");
         }
 
         public virtual DbSet<Usuario> Usuarios { get; set; }
@@ -31,5 +31,21 @@ namespace GloboChat.Infra.Data.Contexto
             base.OnModelCreating(builder);
         }
 
+        public override int SaveChanges()
+        {
+            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataCadastro") != null))
+            {
+                if (entry.State == EntityState.Added)
+                {
+                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
+                }
+
+                if (entry.State == EntityState.Modified)
+                {
+                    entry.Property("DataCadastro").IsModified = false;
+                }
+            }
+            return base.SaveChanges();
+        }
     }
 }

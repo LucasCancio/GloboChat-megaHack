@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GloboChat.Apresentacao.Aplicativo.Services;
+using GloboChat.Apresentacao.Aplicativo.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,12 +16,18 @@ namespace GloboChat.Apresentacao.Aplicativo.View
     {
         public Login()
         {
-            InitializeComponent();
-        }
+            var loginvm = new LoginViewModel();
+            this.BindingContext = loginvm;
 
-        private async void Logar(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
+            loginvm.RedirecionarPagina += async () =>
+            {
+                Navigation.InsertPageBefore(new UsuarioCadastro(), this);
+                await Navigation.PopAsync();
+            };
+            loginvm.LoginFalhou += () => DisplayAlert("Erro", "Login Inválido, tente novamente", "OK");
+
+
+            InitializeComponent();
         }
     }
 }

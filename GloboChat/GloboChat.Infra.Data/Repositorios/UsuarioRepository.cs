@@ -1,17 +1,32 @@
 ﻿using GloboChat.Dominio.Entidades;
 using GloboChat.Dominio.Interfaces.Repositorios;
-using System;
+using GloboChat.Infra.Data.Contexto;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GloboChat.Infra.Data.Repositorios
 {
     public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
     {
+        public UsuarioRepository(GloboChatContext context):base(context)
+        {
+
+        }
+
+        public override Usuario SelectById(int id)
+        {
+            var user = context.Usuarios.Where(u=>u.Id==id)
+                .Include(u => u.pessoa)
+                .ThenInclude(p=>p.login)
+                .FirstOrDefault();
+
+            return user;
+        }
+
         public void AlterarSenha(int id, string novaSenha)
         {
-            var user= context.Set<Usuario>().Where(x => x.Id == id).SingleOrDefault();
+            var user= context.Usuarios.Where(x => x.Id == id).SingleOrDefault();
             user.pessoa.login.Senha = novaSenha;
 
             Update(user);
@@ -19,7 +34,7 @@ namespace GloboChat.Infra.Data.Repositorios
 
         public void AlterarTelefone(int id, string telefone)
         {
-            var user = context.Set<Usuario>().Where(x => x.Id == id).SingleOrDefault();
+            var user = context.Usuarios.Where(x => x.Id == id).SingleOrDefault();
             user.pessoa.Telefone = telefone;
 
             Update(user);
@@ -27,7 +42,12 @@ namespace GloboChat.Infra.Data.Repositorios
 
         public Usuario SelectByCPF(string cpf)
         {
-            return context.Set<Usuario>().Where(x=>x.pessoa.login.CPF==cpf).SingleOrDefault();
+            var user = context.Usuarios.Where(u => u.pessoa.login.CPF == cpf)
+                .Include(u => u.pessoa)
+                .ThenInclude(p => p.login)
+                .FirstOrDefault();
+
+            return user;
         }
     }
 }
